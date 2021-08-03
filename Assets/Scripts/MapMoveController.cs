@@ -86,4 +86,16 @@ public class MapMoveController : MonoBehaviour
                 isMoving = false;
             });
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //EnemySimbolがついているか確認
+        if(collision.TryGetComponent(out EnemySimbol enemySimbol))
+        {
+            Debug.Log("敵と接触");
+
+            enemySimbol.TriggerEnemy();
+        }
+    }
 }
