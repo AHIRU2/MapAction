@@ -15,6 +15,9 @@ public class MapMoveController : MonoBehaviour
     [SerializeField]
     private bool isMoving;
 
+    public GameManager gameManager;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -29,6 +32,10 @@ public class MapMoveController : MonoBehaviour
     public void InputMove()
     {
         // TODO 移動禁止なら処理しない
+        if (GameData.instance.staminaPoint <= 0)
+        {
+            return;
+        }
 
         //移動中には処理しない
         if (isMoving)
@@ -77,6 +84,9 @@ public class MapMoveController : MonoBehaviour
     private void Move(Vector2 destination)
     {
         // TODO 移動できる回数を減算する
+        GameData.instance.staminaPoint--;
+
+        gameManager.staminaPoint.text = GameData.instance.staminaPoint.ToString();
 
         // 移動
         transform.DOMove(destination, moveDuration)
@@ -84,18 +94,30 @@ public class MapMoveController : MonoBehaviour
             .OnComplete(() =>
             {
                 isMoving = false;
+
+
             });
+
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //EnemySimbolがついているか確認
-        if(collision.TryGetComponent(out EnemySimbol enemySimbol))
+        //EnemySymbolがついているか確認
+        if(collision.TryGetComponent(out EnemySymbol enemySymbol))
         {
             Debug.Log("敵と接触");
 
-            enemySimbol.TriggerEnemy();
+            enemySymbol.TriggerEnemy();
         }
+
+        if(collision.TryGetComponent(out ItemSymbol itemSymbol))
+        {
+            Debug.Log("アイテム取得");
+
+            itemSymbol.TriggerItem();
+        }
+
     }
+
 }
