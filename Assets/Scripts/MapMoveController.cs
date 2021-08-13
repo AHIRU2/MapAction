@@ -47,6 +47,12 @@ public class MapMoveController : MonoBehaviour
         movePos.x = Input.GetAxisRaw("Horizontal");
         movePos.y = Input.GetAxisRaw("Vertical");
 
+        //取得タイミングによって不用意な数値が入るので、その場合には処理しない
+        if (movePos == Vector3.zero)
+        {
+            return;
+        }
+
         isMoving = true;
 
         //斜め移動はなしにする
