@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySymbol : MonoBehaviour
+public class EnemySymbol : SymbolBase
 {
-    public SymbolType symbolType;
-
-    public void TriggerEnemy()
+    public override void TrrigerSymbol()
     {
         Debug.Log("バトルシーン移動");
-        SceneStateManager.instance.MoveBattleScene();
+        base.TrrigerSymbol();
+        SceneStateManager.instance.PreparateBattleScene();
     }
 }

@@ -8,6 +8,8 @@ public class GameData : MonoBehaviour
 
     public int staminaPoint;
 
+    public int hp;
+
     private void Awake()
     {
         if (instance == null)

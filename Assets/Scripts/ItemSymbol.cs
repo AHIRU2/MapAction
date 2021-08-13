@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemSymbol : MonoBehaviour
+public class ItemSymbol : SymbolBase
 {
-    public SymbolType symbolType;
-
-    public void TriggerItem()
+    public override void TrrigerSymbol()
     {
         Debug.Log("回復");
+
+        base.TrrigerSymbol();
     }
 }

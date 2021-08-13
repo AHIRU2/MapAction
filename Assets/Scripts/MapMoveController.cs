@@ -109,19 +109,10 @@ public class MapMoveController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //EnemySymbolがついているか確認
-        if(collision.TryGetComponent(out EnemySymbol enemySymbol))
+        //Symbolスクリプトがついているか確認して処理を実行
+        if (collision.TryGetComponent(out SymbolBase symbolBase))
         {
-            Debug.Log("敵と接触");
-
-            enemySymbol.TriggerEnemy();
-        }
-
-        if(collision.TryGetComponent(out ItemSymbol itemSymbol))
-        {
-            Debug.Log("アイテム取得");
-
-            itemSymbol.TriggerItem();
+            symbolBase.TrrigerSymbol();
         }
 
     }
