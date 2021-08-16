@@ -10,6 +10,8 @@ public class GameData : MonoBehaviour
 
     public int hp;
 
+    public int maxHp;
+
     private void Awake()
     {
         if (instance == null)
