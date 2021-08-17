@@ -17,6 +17,16 @@ public class PlayerController3D : MonoBehaviour
 
     private float scale;
 
+    [SerializeField]
+    private float maxTime;
+
+    private float timer;
+
+    [SerializeField]
+    private float chargePower;
+
+    public PlayerState currentPlayerState;
+
     public enum PlayerState{
         Wait,
         Ready,
@@ -32,6 +42,8 @@ public class PlayerController3D : MonoBehaviour
         animator = GetComponent<Animator>();
 
         scale = transform.localScale.x;
+
+        StartCoroutine(ChargeTime());
     }
 
     // Update is called once per frame
@@ -43,9 +55,7 @@ public class PlayerController3D : MonoBehaviour
         // InputManager の Vertical に登録してあるキーが入力されたら、水平(横)方向の入力値として代入
         vertical = Input.GetAxis("Vertical");
 
-        AttackTrigger();
-
-        AvoidanceTrigger();
+        ActionTrriger();
     }
 
     private void FixedUpdate()
@@ -97,22 +107,65 @@ public class PlayerController3D : MonoBehaviour
 
 
     /// <summary>
-    /// 攻撃
+    /// 攻撃と回避
     /// </summary>
-    private void AttackTrigger()
+    private void ActionTrriger()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            animator.SetTrigger("Attack");
+        if (Input.GetKeyDown(KeyCode.Space)) { 
+
+            if (currentPlayerState == PlayerState.Ready)
+            {
+                currentPlayerState = PlayerState.Attack;
+                animator.SetTrigger("Attack");
+
+                StartCoroutine(ActionInterval());
+
+            }
+            else if (currentPlayerState == PlayerState.Wait)
+            {
+                currentPlayerState = PlayerState.Avoidance;
+                animator.SetTrigger("Avoidance");
+
+                StartCoroutine(ActionInterval());
+            }
+
         }
     }
 
 
-    private void AvoidanceTrigger()
+    /// <summary>
+    /// 攻撃可能になるまでの時間
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ChargeTime()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        while (currentPlayerState == PlayerState.Wait)
         {
-            animator.SetTrigger("Avoidance");
+            timer += chargePower;
+
+            if (timer >= maxTime)
+            {
+                currentPlayerState = PlayerState.Ready;
+
+                // TODO 攻撃できるよエフェクト
+
+                timer = 0;
+
+                Debug.Log("攻撃できる");
+            }
+
+            yield return null;
         }
+
+    }
+
+
+    private IEnumerator ActionInterval()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        currentPlayerState = PlayerState.Wait;
+
+        StartCoroutine(ChargeTime());
     }
 }

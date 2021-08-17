@@ -1681,6 +1681,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  maxTime: 120
+  chargePower: 1.5
+  currentPlayerState: 0
 --- !u!54 &1868709520
 Rigidbody:
   m_ObjectHideFlags: 0
