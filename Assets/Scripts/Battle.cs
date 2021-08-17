@@ -13,9 +13,9 @@ public class Battle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneStateManager.instance.PreparateStageScene(SceneName.Main);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    SceneStateManager.instance.PreparateStageScene(SceneName.Main);
+        //}
     }
 }
