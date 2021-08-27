@@ -184,7 +184,7 @@ public class PlayerController3D : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && currentPlayerState==PlayerState.Attack)
         {
             Debug.Log("攻撃！");
         }
