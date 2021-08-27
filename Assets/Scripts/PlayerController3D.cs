@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController3D : MonoBehaviour
@@ -23,7 +25,16 @@ public class PlayerController3D : MonoBehaviour
     private float timer;
 
     [SerializeField]
+    private float actionInterval;
+
+    [SerializeField]
+    private float avoideInterval;
+
+    [SerializeField]
     private float chargePower;
+
+    [SerializeField]
+    private Slider slider;
 
     public PlayerState currentPlayerState;
 
@@ -37,6 +48,8 @@ public class PlayerController3D : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerHpGuage();
+
         rb = GetComponent<Rigidbody>();
 
         animator = GetComponent<Animator>();
@@ -64,7 +77,6 @@ public class PlayerController3D : MonoBehaviour
         Move();
 
     }
-
 
     /// <summary>
     /// 移動
@@ -118,7 +130,7 @@ public class PlayerController3D : MonoBehaviour
                 currentPlayerState = PlayerState.Attack;
                 animator.SetTrigger("Attack");
 
-                StartCoroutine(ActionInterval());
+                StartCoroutine(ActionInterval(actionInterval));
 
             }
             else if (currentPlayerState == PlayerState.Wait)
@@ -126,7 +138,7 @@ public class PlayerController3D : MonoBehaviour
                 currentPlayerState = PlayerState.Avoidance;
                 animator.SetTrigger("Avoidance");
 
-                StartCoroutine(ActionInterval());
+                StartCoroutine(ActionInterval(avoideInterval));
             }
 
         }
@@ -160,12 +172,26 @@ public class PlayerController3D : MonoBehaviour
     }
 
 
-    private IEnumerator ActionInterval()
+    private IEnumerator ActionInterval(float interval)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(interval);
 
         currentPlayerState = PlayerState.Wait;
 
         StartCoroutine(ChargeTime());
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Debug.Log("攻撃！");
+        }
+    }
+
+    public void PlayerHpGuage()
+    {
+        slider.DOValue((float)GameData.instance.hp / GameData.instance.maxHp, 0.25f);
     }
 }
