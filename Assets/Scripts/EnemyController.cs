@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public EnemyDataSO.EnemyData enemyData;
+
+    public int enemyNo;
+
+    public float Hp;
+
+    private void Start()
     {
-        
+        SetUpEnemy();
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+    public void SetUpEnemy()
     {
-        
+        enemyData = DataBaseManager.instance.enemyDataSO.enemyDataList.Find(x => x.no == enemyNo);
+
+        Hp = enemyData.maxHp;
+
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void Damage(float attackPower)
     {
-        if (collision.gameObject.tag == "Player")
+        Hp -= attackPower;
+
+        if (Hp <= 0)
         {
-            Debug.Log("ダメージ");
+            Destroy(gameObject,0.5f);
         }
     }
 }

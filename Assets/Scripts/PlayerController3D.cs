@@ -36,6 +36,15 @@ public class PlayerController3D : MonoBehaviour
     [SerializeField]
     private Slider slider;
 
+    [SerializeField]
+    private TimingGaugeController timingGaugeController;
+
+    [SerializeField]
+    private float criticalRate;
+
+    [SerializeField]
+    private float attackPower;
+
     public PlayerState currentPlayerState;
 
     public enum PlayerState{
@@ -130,6 +139,7 @@ public class PlayerController3D : MonoBehaviour
                 currentPlayerState = PlayerState.Attack;
                 animator.SetTrigger("Attack");
 
+
                 StartCoroutine(ActionInterval(actionInterval));
 
             }
@@ -184,9 +194,22 @@ public class PlayerController3D : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" && currentPlayerState==PlayerState.Attack)
+        if (other.TryGetComponent(out EnemyController enemyController) && currentPlayerState==PlayerState.Attack)
         {
-            Debug.Log("攻撃！");
+
+            StartCoroutine(timingGaugeController.PausePointer());
+
+            float currentAttackPower = attackPower;
+
+            if (timingGaugeController.CheckCritical())
+            {
+                currentAttackPower = currentAttackPower * criticalRate;
+
+                Debug.Log("攻撃！" + currentAttackPower);
+            }
+
+            // TODO 敵に付いてるスクリプトを取得して、ダメージを引数で渡す
+            enemyController.Damage(currentAttackPower);
         }
     }
 

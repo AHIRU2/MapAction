@@ -15,7 +15,7 @@ public class EnemyDataSO : ScriptableObject
         public string name; //名前
         public GameObject enemyPrefab; //敵キャラ
         public int attackPower; //攻撃力
-        public int maxHp; //HP
+        public float maxHp; //HP
 
     }
     
