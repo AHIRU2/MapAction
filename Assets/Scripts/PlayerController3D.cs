@@ -45,6 +45,8 @@ public class PlayerController3D : MonoBehaviour
     [SerializeField]
     private float attackPower;
 
+    public GameObject[] enemyObjects;
+
     public PlayerState currentPlayerState;
 
     public enum PlayerState{
@@ -192,6 +194,10 @@ public class PlayerController3D : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 攻撃処理
+    /// </summary>
+    /// <param name="other"></param>
     void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out EnemyController enemyController) && currentPlayerState==PlayerState.Attack)
@@ -217,4 +223,5 @@ public class PlayerController3D : MonoBehaviour
     {
         slider.DOValue((float)GameData.instance.hp / GameData.instance.maxHp, 0.25f);
     }
+
 }
