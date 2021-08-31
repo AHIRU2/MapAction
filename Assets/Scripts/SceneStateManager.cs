@@ -49,6 +49,8 @@ public class SceneStateManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator LoadStageScene(SceneName nextLoadSceneName)
     {
+        yield return new WaitForSeconds(1.5f);
+
         string olsSceneName = SceneManager.GetActiveScene().name;
         Scene scene = SceneManager.GetSceneByName(nextLoadSceneName.ToString());
 

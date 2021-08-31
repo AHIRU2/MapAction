@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField]
     private bool isAttack;
+     
+    public BattleManager battleManager;
 
     public EnemyDataSO.EnemyData enemyData;
 
@@ -23,6 +25,8 @@ public class EnemyController : MonoBehaviour
 
     private Animator animator;
 
+    private float scale;
+
     private void Start()
     {
         SetUpEnemy();
@@ -33,7 +37,16 @@ public class EnemyController : MonoBehaviour
         if (navMeshAgent != null && playerController3D!=null)
         {
             navMeshAgent.SetDestination(playerController3D.transform.position);
-        }
+            transform.rotation = Quaternion.identity;
+            if (transform.position.x < playerController3D.transform.position.x)
+            {
+                transform.localScale = new Vector3(scale,transform.localScale.y,transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-scale, transform.localScale.y, transform.localScale.z);
+            }
+        }     
     }
 
     public void SetUpEnemy()
@@ -42,11 +55,15 @@ public class EnemyController : MonoBehaviour
 
         Hp = enemyData.maxHp;
 
+        scale = transform.localScale.x;
+
         if(TryGetComponent(out navMeshAgent))
         {
             navMeshAgent.speed = enemyData.moveSpeed;
             navMeshAgent.SetDestination(playerController3D.transform.position);
         }
+
+        animator = GetComponent<Animator>();
 
     }
 
@@ -57,7 +74,9 @@ public class EnemyController : MonoBehaviour
         if (Hp <= 0)
         {
             isAttack = false;
-            Destroy(gameObject,1.5f);
+            battleManager.UpdateDethEnemycount();
+            animator.SetBool("Death",true);
+            Destroy(gameObject,1.0f);
         }
     }
 
@@ -116,6 +135,8 @@ public class EnemyController : MonoBehaviour
 
         GameData.instance.hp -= enemyData.attackPower;
 
+        animator.SetTrigger("Attack");
+
         playerController3D.PlayerHpGuage();
     }
 
@@ -126,7 +147,7 @@ public class EnemyController : MonoBehaviour
             Debug.Log("敵攻撃停止");
 
             isAttack = false;
-            playerController3D = null;
+            //playerController3D = null;
         }
     }
 }

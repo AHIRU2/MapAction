@@ -18,8 +18,6 @@ public class UIManager : MonoBehaviour
     {
         GameData.instance.hp = GameData.instance.maxHp;
 
-        txtcurrentHp.text = "HP:" + GameData.instance.hp + "/"+ GameData.instance.maxHp;
-
         //HPゲージの更新
         DisplayHpGauge();
     }
@@ -33,6 +31,7 @@ public class UIManager : MonoBehaviour
     //HPゲージを現在地に合わせて制御
     public void DisplayHpGauge()
     {
+        txtcurrentHp.text = "HP:" + GameData.instance.hp + "/" + GameData.instance.maxHp;
         slider.DOValue((float)GameData.instance.hp / GameData.instance.maxHp, 0.25f);
     }
 }
