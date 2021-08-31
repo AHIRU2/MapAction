@@ -50,7 +50,7 @@ public class StageGenerator : MonoBehaviour
                 {
                     case StageType.Field:
                         //一番外側の場合
-                        if(i==-row || i==row-1 || j==-column || j == column)
+                        if(i==-row || i==row-1 || j==-column || j == column-1)
                         {
                             //壁用の子ライダータイルを配置
                             tileMapCollison.SetTile(new Vector3Int(i, j, 0), fieldCollisionTiles[0]);
