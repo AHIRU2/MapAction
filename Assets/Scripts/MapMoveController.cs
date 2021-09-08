@@ -17,6 +17,8 @@ public class MapMoveController : MonoBehaviour
 
     public GameManager gameManager;
 
+    public SceneStateManager sceneStateManager;
+
 
     // Update is called once per frame
     void Update()
@@ -103,6 +105,11 @@ public class MapMoveController : MonoBehaviour
 
 
             });
+
+        if (GameData.instance.staminaPoint == 0)
+        {
+            sceneStateManager.PreparateBattleScene();
+        }
 
     }
 

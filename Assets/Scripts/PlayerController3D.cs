@@ -53,7 +53,8 @@ public class PlayerController3D : MonoBehaviour
         Wait,
         Ready,
         Attack,
-        Avoidance
+        Avoidance,
+        Death
         }
 
     // Start is called before the first frame update
@@ -94,6 +95,11 @@ public class PlayerController3D : MonoBehaviour
     /// </summary>
     private void Move()
     {
+        if (currentPlayerState == PlayerState.Death)
+        {
+            return;
+        }
+
         Vector3 dir = new Vector3(horizontal, 0, vertical);
 
         rb.velocity = dir*moveSpeed;
@@ -222,6 +228,15 @@ public class PlayerController3D : MonoBehaviour
     public void PlayerHpGuage()
     {
         slider.DOValue((float)GameData.instance.hp / GameData.instance.maxHp, 0.25f);
+
+        if (GameData.instance.hp <= 0)
+        {
+            GameData.instance.currentGameState = GameData.GameState.GameOver;
+            Debug.Log(GameData.instance.currentGameState);
+            currentPlayerState = PlayerState.Death;
+            animator.SetTrigger("Death");
+            Destroy(this.gameObject, 1.0f);
+        }
     }
 
 }

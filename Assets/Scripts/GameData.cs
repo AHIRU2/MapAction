@@ -12,6 +12,17 @@ public class GameData : MonoBehaviour
 
     public int maxHp;
 
+    public enum GameState
+    {
+        Map,
+        Battle,
+        GameOver,
+        GameClear
+    }
+
+    public GameState currentGameState;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -24,4 +35,5 @@ public class GameData : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

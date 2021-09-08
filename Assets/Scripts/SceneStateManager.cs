@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class SceneStateManager : MonoBehaviour
 {
@@ -9,6 +11,12 @@ public class SceneStateManager : MonoBehaviour
 
     [SerializeField]
     private Stage stage;
+
+    [SerializeField]
+    private FadeImage fadeImg;
+
+    [SerializeField]
+    private Fade fade;
 
     private void Awake()
     {
@@ -38,7 +46,25 @@ public class SceneStateManager : MonoBehaviour
     /// <param name="nextLoadSceneNane"></param>
     public void PreparateStageScene(SceneName nextLoadSceneName)
     {
-        StartCoroutine(LoadStageScene(nextLoadSceneName));
+        GameData.instance.currentGameState = GameData.GameState.Map;
+
+        DOTween.To(
+     () => fadeImg.cutoutRange,
+     num => fadeImg.cutoutRange = num,
+     1.0f,
+     0.5f).SetEase(Ease.Linear)
+            .OnComplete(() =>
+            {
+                StartCoroutine(LoadStageScene(nextLoadSceneName));
+
+
+            });
+
+     //   DOTween.To(
+     //() => fadeImg.cutoutRange,
+     //num => fadeImg.cutoutRange = num,
+     //0f,
+     //0.5f);
     }
 
 
@@ -70,8 +96,24 @@ public class SceneStateManager : MonoBehaviour
     /// </summary>
     public void PreparateBattleScene()
     {
-        Debug.Log("Load Battle Scene");
-        StartCoroutine(LoadBattleScene());
+        GameData.instance.currentGameState = GameData.GameState.Battle;
+        DOTween.To(
+            () => fadeImg.cutoutRange,
+            num => fadeImg.cutoutRange = num,
+            1.0f,
+            0.5f).SetEase(Ease.Linear)
+            .OnComplete(() =>
+            {
+                Debug.Log("Load Battle Scene");
+                StartCoroutine(LoadBattleScene());
+
+            });
+
+        //DOTween.To(
+        //() => fadeImg.cutoutRange,
+        //num => fadeImg.cutoutRange = num,
+        //0f,
+        //0.5f);
     }
 
 

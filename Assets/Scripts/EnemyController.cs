@@ -34,7 +34,8 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (navMeshAgent != null && playerController3D!=null)
+
+        if (navMeshAgent != null && playerController3D !=null && GameData.instance.currentGameState!=GameData.GameState.GameOver)
         {
             navMeshAgent.SetDestination(playerController3D.transform.position);
             transform.rotation = Quaternion.identity;
@@ -84,7 +85,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isAttack && other.gameObject.tag == "Player")
+        if (!isAttack && other.gameObject.tag == "Player" && GameData.instance.currentGameState!=GameData.GameState.GameOver)
         {
             Debug.Log("プレイヤーへの攻撃");
 
