@@ -43,15 +43,6 @@ public class StageGenerator : MonoBehaviour
     [SerializeField, Header("シンボルの生成率"), Range(0, 100)]
     private int generateSymbolRate;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Debug用
-        GenerateStageFromRandomTiles();
-        GenerateSymbols(-1);
-    }
-
-
     /// <summary>
     /// ランダムなタイルをタイルマップに配置してステージを作る
     /// </summary>

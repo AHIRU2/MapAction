@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemSymbol_Stamina : MonoBehaviour
+public class ItemSymbol_Stamina : SymbolBase
 {
     // Start is called before the first frame update
     void Start()

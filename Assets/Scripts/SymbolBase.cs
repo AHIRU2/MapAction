@@ -18,4 +18,11 @@ public class SymbolBase : MonoBehaviour
         Destroy(gameObject,0.5f);
     }
 
+    protected SymbolManager symbolManager;
+
+    public virtual void OnEnterSymbol(SymbolManager symbolManager)
+    {
+        this.symbolManager = symbolManager;
+    }
+
 }

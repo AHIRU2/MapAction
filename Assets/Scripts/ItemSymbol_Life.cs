@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemSymbol_Life : MonoBehaviour
+public class ItemSymbol_Life : SymbolBase
 {
     // Start is called before the first frame update
     void Start()
