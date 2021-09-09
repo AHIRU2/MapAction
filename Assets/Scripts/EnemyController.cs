@@ -74,6 +74,7 @@ public class EnemyController : MonoBehaviour
 
         if (Hp <= 0)
         {
+            Debug.Log("死亡");
             isAttack = false;
             battleManager.UpdateDethEnemycount();
             animator.SetBool("Death",true);
@@ -85,7 +86,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isAttack && other.gameObject.tag == "Player" && GameData.instance.currentGameState!=GameData.GameState.GameOver)
+        if (!isAttack && other.gameObject.tag == "Player")
         {
             Debug.Log("プレイヤーへの攻撃");
 
@@ -111,7 +112,7 @@ public class EnemyController : MonoBehaviour
         int timer = 0;
 
         //攻撃中の間だけループ処理を繰り返す
-        while (isAttack)
+        while (isAttack && GameData.instance.currentGameState != GameData.GameState.GameOver)
         {
             timer++;
 

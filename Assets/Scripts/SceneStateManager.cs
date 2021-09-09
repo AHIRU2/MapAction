@@ -13,10 +13,10 @@ public class SceneStateManager : MonoBehaviour
     private Stage stage;
 
     [SerializeField]
-    private FadeImage fadeImg;
+    private Fade fade;
 
     [SerializeField]
-    private Fade fade;
+    private float fadeDuration = 1.0f;
 
     private void Awake()
     {
@@ -48,23 +48,10 @@ public class SceneStateManager : MonoBehaviour
     {
         GameData.instance.currentGameState = GameData.GameState.Map;
 
-        DOTween.To(
-     () => fadeImg.cutoutRange,
-     num => fadeImg.cutoutRange = num,
-     1.0f,
-     0.5f).SetEase(Ease.Linear)
-            .OnComplete(() =>
-            {
-                StartCoroutine(LoadStageScene(nextLoadSceneName));
+        fade.FadeIn(fadeDuration, () => { LoadStageScene(nextLoadSceneName); });
 
+        //StartCoroutine(LoadStageScene(nextLoadSceneName));
 
-            });
-
-     //   DOTween.To(
-     //() => fadeImg.cutoutRange,
-     //num => fadeImg.cutoutRange = num,
-     //0f,
-     //0.5f);
     }
 
 
@@ -73,20 +60,22 @@ public class SceneStateManager : MonoBehaviour
     /// </summary>
     /// <param name="nextLoadSceneName"></param>
     /// <returns></returns>
-    private IEnumerator LoadStageScene(SceneName nextLoadSceneName)
+    private void LoadStageScene(SceneName nextLoadSceneName)
     {
-        yield return new WaitForSeconds(1.5f);
 
         string olsSceneName = SceneManager.GetActiveScene().name;
-        Scene scene = SceneManager.GetSceneByName(nextLoadSceneName.ToString());
+        //Scene scene = SceneManager.GetSceneByName(nextLoadSceneName.ToString());
 
-        while (!scene.isLoaded)
-        {
-            yield return null;
-        }
+        //while (!scene.isLoaded)
+        //{
+        //    return null;
+        //}
 
-        SceneManager.SetActiveScene(scene);
+        //SceneManager.SetActiveScene(scene);
         stage.gameObject.SetActive(true);
+
+        fade.FadeOut(fadeDuration);
+
         SceneManager.UnloadSceneAsync(olsSceneName);
     }
 
@@ -97,23 +86,11 @@ public class SceneStateManager : MonoBehaviour
     public void PreparateBattleScene()
     {
         GameData.instance.currentGameState = GameData.GameState.Battle;
-        DOTween.To(
-            () => fadeImg.cutoutRange,
-            num => fadeImg.cutoutRange = num,
-            1.0f,
-            0.5f).SetEase(Ease.Linear)
-            .OnComplete(() =>
-            {
-                Debug.Log("Load Battle Scene");
-                StartCoroutine(LoadBattleScene());
 
-            });
+        Debug.Log("Load Battle Scene");
 
-        //DOTween.To(
-        //() => fadeImg.cutoutRange,
-        //num => fadeImg.cutoutRange = num,
-        //0f,
-        //0.5f);
+        fade.FadeIn(fadeDuration, () => { StartCoroutine(LoadBattleScene()); });
+        
     }
 
 
@@ -131,6 +108,8 @@ public class SceneStateManager : MonoBehaviour
         yield return new WaitUntil(() => scene.isLoaded);
 
         stage.gameObject.SetActive(false);
+
+        fade.FadeOut(fadeDuration);
 
         //追加で読み込んだ時、どのシーンをActiveにするか指定する
         SceneManager.SetActiveScene(scene);

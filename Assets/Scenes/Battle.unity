@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbfb7506d211749d190691156171091f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemy: 2
+  maxEnemy: 3
   deathEnemyCount: 0
 --- !u!1001 &1001613336
 PrefabInstance:

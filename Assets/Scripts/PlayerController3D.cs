@@ -235,7 +235,7 @@ public class PlayerController3D : MonoBehaviour
             Debug.Log(GameData.instance.currentGameState);
             currentPlayerState = PlayerState.Death;
             animator.SetTrigger("Death");
-            Destroy(this.gameObject, 1.0f);
+            //Destroy(this.gameObject, 1.0f);
         }
     }
 
