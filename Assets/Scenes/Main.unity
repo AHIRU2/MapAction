@@ -221,6 +221,7 @@ MonoBehaviour:
   staminaPoint: 30
   hp: 0
   maxHp: 10
+  MaxMoveCount: 0
   currentGameState: 0
 --- !u!4 &173704034
 Transform:
@@ -753,6 +754,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   symbolsList: []
+  enemiesList: []
+  spriteMaskTran: {fileID: 0}
+  tilemapCollider: {fileID: 1390257514}
 --- !u!1 &958172982
 GameObject:
   m_ObjectHideFlags: 0
@@ -10076,6 +10080,7 @@ MonoBehaviour:
   tilemapCollider: {fileID: 1390257514}
   isMoving: 0
   gameManager: {fileID: 1810160373}
+  uiManager: {fileID: 0}
   sceneStateManager: {fileID: 1724151129}
 --- !u!212 &1221263815
 SpriteRenderer:
@@ -12574,6 +12579,7 @@ MonoBehaviour:
   uiManager: {fileID: 1561732803}
   stageGenerator: {fileID: 1576595875}
   symbolManager: {fileID: 874294324}
+  mapMoveController: {fileID: 0}
 --- !u!1 &2140951629
 GameObject:
   m_ObjectHideFlags: 0

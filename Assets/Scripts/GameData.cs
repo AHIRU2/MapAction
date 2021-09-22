@@ -12,6 +12,8 @@ public class GameData : MonoBehaviour
 
     public int maxHp;
 
+    public int MaxMoveCount;
+
     public enum GameState
     {
         Map,
