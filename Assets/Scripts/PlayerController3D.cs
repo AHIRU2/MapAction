@@ -42,8 +42,8 @@ public class PlayerController3D : MonoBehaviour
     [SerializeField]
     private float criticalRate;
 
-    [SerializeField]
-    private float attackPower;
+    //[SerializeField]
+    //private float attackPower;
 
     public GameObject[] enemyObjects;
 
@@ -211,7 +211,7 @@ public class PlayerController3D : MonoBehaviour
 
             StartCoroutine(timingGaugeController.PausePointer());
 
-            float currentAttackPower = attackPower;
+            float currentAttackPower = GameData.instance.attackPower;
 
             if (timingGaugeController.CheckCritical())
             {

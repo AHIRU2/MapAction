@@ -36,7 +36,7 @@ public class GameData : MonoBehaviour
     //ボスバトルになったかどうかの確認用
     public bool isBossBattled;
 
-    //public int attackPower;
+    public int attackPower;
 
     public int MaxMoveCount;
 
@@ -62,25 +62,26 @@ public class GameData : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    //ゲームの初期化
-    InitialzeGameData();
+        //ゲームの初期化
+        InitialzeGameData();
 
-    //ゲームの初期化用ローカル関数
-    void InitialzeGameData()
-    {
-        // TODO キャラ用のデータがある場合には、そのキャラごとの最大&#13259;を設定
-        //maxHp=currentCharaData.maxHp;
+        //ゲームの初期化用ローカル関数(メソッドの中でだけ使えるメソッド)
+        void InitialzeGameData()
+        {
+            // TODO キャラ用のデータがある場合には、そのキャラごとの最大&#13259;を設定
+            //maxHp=currentCharaData.maxHp;
 
-        hp = maxHp;
+            hp = maxHp;
 
-        playerLevel = 1;
+            playerLevel = 1;
 
-        totalExp = 0;
+            totalExp = 0;
 
-        // TODO レベルアップで獲得できるボーナスのポイント
-        //abilityPoint+=playerLevel;
+            // TODO レベルアップで獲得できるボーナスのポイント
+            //abilityPoint+=playerLevel;
+        }
+
     }
 
 }
