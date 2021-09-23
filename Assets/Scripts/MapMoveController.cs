@@ -35,6 +35,7 @@ public class MapMoveController : MonoBehaviour
     private int steppingRecoveryPoint = 3; //足踏みした時のHP回復量
 
     private UnityEvent<MapMoveController> enemySymbolTriggerEvent;
+
     private UnityEvent<MapMoveController> orbSymbolTriggerEvent;
 
 
@@ -46,18 +47,22 @@ public class MapMoveController : MonoBehaviour
         PlayerConditionBase condition = gameObject.AddComponent<PlayerCondition_Fatigue>();
 
         //PlayerConditionBaseクラスのAddConditonメソッドを実行する。引数は左から順番に（コンディションの種類、コンディションの持続時間、コンディションの効果(今回は攻撃力に乗算する値)、MapMoveControllerクラス、SymbolManagerクラス）
-        condition.AddCondition(ConditionType.Fatigue, 5, 0.5f, this, stage.GetSymbolManager());
+        //condition.AddCondition(ConditionType.Fatigue, 5, 0.5f, this, stage.GetSymbolManager());
 
         //コンディション用のリストに追加
-        conditionsList.Add(condition);
+        //conditionsList.Add(condition);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //キー入力の確認
-        InputMove();
+        if (stage != null)
+        {
+            //キー入力の確認
+            InputMove();
+        }
+
     }
 
 

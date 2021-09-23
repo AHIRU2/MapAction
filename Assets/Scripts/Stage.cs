@@ -135,7 +135,7 @@ public class Stage : MonoBehaviour
     private void CheckTurn()
     {
         //移動できるか確認
-        if (GameData.instance.MaxMoveCount <= 0)
+        if (GameData.instance.staminaPoint <= 0)
         {
             //移動できないならボスのターンにする
             CurrentTurnState = TurnState.Boss;

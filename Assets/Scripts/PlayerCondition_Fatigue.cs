@@ -13,7 +13,7 @@ public class PlayerCondition_Fatigue : PlayerConditionBase
         originValue = GameData.instance.attackPower;
 
         //バトル時の攻撃力を半減
-        GameData.instance.attackPower = Mathf.FloorToInt(GameData.instance, attackPower * conditionValue);
+        GameData.instance.attackPower = Mathf.FloorToInt(GameData.instance.attackPower * conditionValue);
 
         //親クラスのOnEnterConditionメソッドを実行
         base.OnEnterCondition();

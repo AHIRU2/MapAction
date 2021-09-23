@@ -52,8 +52,8 @@ public class PlayerConditionBase : MonoBehaviour
         //プレファブが取得できたら
         if (conditionEffectPrefab != null)
         {
-            //エフェクト生成
-            conditionEffect = Instantiate(conditionEffectPrefab, mapMoveController.GetConditionEffectTran());
+            // TODO エフェクト生成
+            //conditionEffect = Instantiate(conditionEffectPrefab, mapMoveController.GetConditionEffectTran());
 
             Debug.Log("エフェクト生成:" + conditionType.ToString());
 
@@ -82,8 +82,8 @@ public class PlayerConditionBase : MonoBehaviour
 
         Debug.Log("コンディション削除");
 
-        //コンディションのListから削除
-        mapMoveController.RemoveConditionList(this);
+        // TODO コンディションのListから削除
+        //mapMoveController.RemoveConditionList(this);
     }
 
 

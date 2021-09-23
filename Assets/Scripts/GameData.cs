@@ -38,8 +38,6 @@ public class GameData : MonoBehaviour
 
     public int attackPower;
 
-    public int MaxMoveCount;
-
     public enum GameState
     {
         Map,
