@@ -283,5 +283,69 @@ public class MapMoveController : MonoBehaviour
     {
         return stage;
     }
+
+
+    /// <summary>
+    /// 引数に指定されたコンディションが付与されているか確認
+    /// </summary>
+    /// <param name="conditionType"></param>
+    /// <returns></returns>
+    public bool JudgeConditionType(ConditionType conditionType)
+    {
+        return conditionsList.Find(x => x.GetConditionType() == conditionType);
+    }
+
+
+    /// <summary>
+    /// コンディション用のエフェクト生成位置の取得
+    /// </summary>
+    /// <returns></returns>
+    public Transform GetConditionEffectTran()
+    {
+        return conditionEffectTran;
+    }
+
+
+    /// <summary>
+    /// 現在のコンディションの状態の残り時間を更新
+    /// </summary>
+    public void UpdateConditionsDuration()
+    {
+        for(int i = 0; i < conditionsList.Count; i++)
+        {
+            conditionsList[i].CalcDuration();
+        }
+    }
+
+
+    /// <summary>
+    /// コンディションを追加
+    /// </summary>
+    /// <param name="playerCondition"></param>
+    public void AddConditionsList(PlayerConditionBase playerCondition)
+    {
+        conditionsList.Add(playerCondition);
+    }
+
+
+    /// <summary>
+    /// コンディションの削除
+    /// </summary>
+    /// <param name="playerCondition"></param>
+    public void RemoveConditionsList(PlayerConditionBase playerCondition)
+    {
+        conditionsList.Remove(playerCondition);
+        Destroy(playerCondition);
+    }
+
+
+    /// <summary>
+    /// コンディションのListを取得
+    /// </summary>
+    /// <returns></returns>
+    public List<PlayerConditionBase> GetConditionsList()
+    {
+        return conditionsList;
+    }
 }
 

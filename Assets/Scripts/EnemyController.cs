@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
 
     public float Hp;
 
+    public int exp;
+
     private NavMeshAgent navMeshAgent;
 
     public PlayerController3D playerController3D;
@@ -58,6 +60,8 @@ public class EnemyController : MonoBehaviour
 
         scale = transform.localScale.x;
 
+        exp = enemyData.exp;
+
         if(TryGetComponent(out navMeshAgent))
         {
             navMeshAgent.speed = enemyData.moveSpeed;
@@ -95,6 +99,9 @@ public class EnemyController : MonoBehaviour
                 isAttack = true;
 
                 StartCoroutine(PrepareteAttack());
+
+                //デバフ付与の判定
+                //playerController3D.JudgDebuffCondition(this.enemyData);
             }
         }
 

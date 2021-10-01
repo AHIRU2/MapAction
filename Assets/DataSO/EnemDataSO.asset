@@ -15,19 +15,28 @@ MonoBehaviour:
   enemyDataList:
   - no: 0
     name: A
-    enemyPrefab: {fileID: 7576084311844787763, guid: e5da89cc8352a4e2f9ea7bdfcd086ae5, type: 3}
+    enemyPrefab: {fileID: 0}
     attackPower: 3
     maxHp: 2
     moveSpeed: 3
+    exp: 10
+    attackInterval: 0
+    debuffDatas: []
   - no: 1
     name: B
-    enemyPrefab: {fileID: 6777928885802828292, guid: 4d895a16562c548fdb0419af3af93526, type: 3}
+    enemyPrefab: {fileID: 0}
     attackPower: 10
     maxHp: 2
     moveSpeed: 2
+    exp: 100
+    attackInterval: 0
+    debuffDatas: []
   - no: 2
     name: C
-    enemyPrefab: {fileID: 7526760893594329190, guid: 9708d176c6fe942618df333157d7d690, type: 3}
+    enemyPrefab: {fileID: 0}
     attackPower: 5
     maxHp: 1
     moveSpeed: 1
+    exp: 1000
+    attackInterval: 0
+    debuffDatas: []

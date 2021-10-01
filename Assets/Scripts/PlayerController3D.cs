@@ -239,4 +239,39 @@ public class PlayerController3D : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// デバフ付与の判定
+    /// </summary>
+    /// <param name="enemyData"></param>
+    public void JudgDebuffCondition(EnemyDataSO.EnemyData enemyData)
+    {
+        //エネミー側にデバフの付与設定がない場合には処理しない
+        if (enemyData.debuffDatas.Length == 0)
+        {
+            return;
+        }
+
+        //エネミー側に設定されているデバフの数だけ判定
+        for(int i = 0; i < enemyData.debuffDatas.Length; i++)
+        {
+            //乱数が付与確率以下なら
+            if (Random.Range(0, 100) <= enemyData.debuffDatas[i].rate)
+            {
+                //デバフ付与
+                AddDebuffCondition(enemyData.debuffDatas[i].debuffconditionType);
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// 指定したタイプのデバフを付与し、GameDataにて保持。Stageシーンに戻ってから適用
+    /// </summary>
+    /// <param name="debuffConditionType"></param>
+    public void AddDebuffCondition(ConditionType debuffConditionType)
+    {
+        GameData.instance.debuffConditionList.Add(debuffConditionType);
+    }
+
 }
