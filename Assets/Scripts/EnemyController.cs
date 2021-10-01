@@ -81,6 +81,7 @@ public class EnemyController : MonoBehaviour
             Debug.Log("死亡");
             isAttack = false;
             battleManager.UpdateDethEnemycount();
+            battleManager.AddCurrentBattleTotalExp(exp);
             animator.SetBool("Death",true);
             Destroy(gameObject,1.0f);
         }

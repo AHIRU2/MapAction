@@ -113,4 +113,6 @@ public class BattleManager : MonoBehaviour
         currentBattleTotalExp += exp;
     }
 
+
+
 }
