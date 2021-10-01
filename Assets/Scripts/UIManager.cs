@@ -13,10 +13,13 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text txtcurrentHp;
 
+    [SerializeField]
+    private Text txtStaminaPoint;
+
     // Start is called before the first frame update
     void Start()
     {
-        GameData.instance.hp = GameData.instance.maxHp;
+        //GameData.instance.hp = GameData.instance.maxHp;
 
         //HPゲージの更新
         DisplayHpGauge();
@@ -33,5 +36,10 @@ public class UIManager : MonoBehaviour
     {
         txtcurrentHp.text = "HP:" + GameData.instance.hp + "/" + GameData.instance.maxHp;
         slider.DOValue((float)GameData.instance.hp / GameData.instance.maxHp, 0.25f);
+    }
+
+    public void DisplayStaminaPoint()
+    {
+        txtStaminaPoint.text= GameData.instance.staminaPoint.ToString();
     }
 }

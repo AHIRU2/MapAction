@@ -72,6 +72,8 @@ public class GameData : MonoBehaviour
 
             hp = maxHp;
 
+            hp = 5;
+
             playerLevel = 1;
 
             totalExp = 0;

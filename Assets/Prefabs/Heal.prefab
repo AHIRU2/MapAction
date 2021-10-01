@@ -101,6 +101,7 @@ MonoBehaviour:
   effectTran: {fileID: 0}
   spriteSymbol: {fileID: 0}
   isSymbolTriggerd: 0
+  recoveryPoint: 10
 --- !u!61 &-1598224209910790852
 BoxCollider2D:
   m_ObjectHideFlags: 0

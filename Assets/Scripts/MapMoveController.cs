@@ -140,7 +140,7 @@ public class MapMoveController : MonoBehaviour
         GameData.instance.staminaPoint--;
 
         //スタミナ表示更新
-        gameManager.staminaPoint.text = GameData.instance.staminaPoint.ToString();
+        uiManager.DisplayStaminaPoint();
 
         // 移動
         transform.DOMove(destination, moveDuration)
