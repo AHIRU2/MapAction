@@ -2,6 +2,7 @@ public enum SymbolType
 {
     Enemy,
     Stamina,
-    Life
+    Life,
+    Condition,
 
 }

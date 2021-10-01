@@ -102,7 +102,7 @@ public class EnemyController : MonoBehaviour
                 StartCoroutine(PrepareteAttack());
 
                 //デバフ付与の判定
-                //playerController3D.JudgDebuffCondition(this.enemyData);
+                playerController3D.JudgDebuffCondition(this.enemyData);
             }
         }
 

@@ -44,7 +44,7 @@ public class MapMoveController : MonoBehaviour
         //デバッグ用
 
         //MapMoveControllerクラスのアタッチされているゲームオブジェクト（Player）に新しいクラス（PlayerCondition＿Fatigue）を追加する
-        PlayerConditionBase condition = gameObject.AddComponent<PlayerCondition_Fatigue>();
+        //PlayerConditionBase condition = gameObject.AddComponent<PlayerCondition_Fatigue>();
 
         //PlayerConditionBaseクラスのAddConditonメソッドを実行する。引数は左から順番に（コンディションの種類、コンディションの持続時間、コンディションの効果(今回は攻撃力に乗算する値)、MapMoveControllerクラス、SymbolManagerクラス）
         //condition.AddCondition(ConditionType.Fatigue, 5, 0.5f, this, stage.GetSymbolManager());

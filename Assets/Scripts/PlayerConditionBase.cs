@@ -45,19 +45,19 @@ public class PlayerConditionBase : MonoBehaviour
 
     protected virtual void OnEnterCondition()
     {
-        //生成するエフェクトのプレファブを取得
-        ConditionEffect conditionEffectPrefab = ConditionEffectManager.instance.GetConditionEffect(conditionType);
-        Debug.Log(conditionEffectPrefab);
+        // TODO 生成するエフェクトのプレファブを取得
+            //ConditionEffect conditionEffectPrefab = ConditionEffectManager.instance.GetConditionEffect(conditionType);
+            //Debug.Log(conditionEffectPrefab);
 
-        //プレファブが取得できたら
-        if (conditionEffectPrefab != null)
-        {
-            // TODO エフェクト生成
-            //conditionEffect = Instantiate(conditionEffectPrefab, mapMoveController.GetConditionEffectTran());
+        // TODO プレファブが取得できたら
+        //if (conditionEffectPrefab != null)
+        //{
+        //    // TODO エフェクト生成
+        //    //conditionEffect = Instantiate(conditionEffectPrefab, mapMoveController.GetConditionEffectTran());
 
-            Debug.Log("エフェクト生成:" + conditionType.ToString());
+        //    Debug.Log("エフェクト生成:" + conditionType.ToString());
 
-        }
+        //}
 
         Debug.Log("コンディション付与");
     }
