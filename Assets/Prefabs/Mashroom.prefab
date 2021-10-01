@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1993930779122282831}
   - component: {fileID: 1993930779122282830}
-  - component: {fileID: 6173918439150801716}
   - component: {fileID: -4853636145691163834}
+  - component: {fileID: -9049650551185313001}
   m_Layer: 0
   m_Name: Mashroom
   m_TagString: Untagged
@@ -84,23 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
---- !u!114 &6173918439150801716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993930779122282824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92cefd9738a174c11b44a6b8384dc46f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  symbolType: 2
-  no: 0
-  effectTran: {fileID: 0}
-  spriteSymbol: {fileID: 0}
-  isSymbolTriggerd: 0
 --- !u!61 &-4853636145691163834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,3 +110,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.94, y: 3.13}
   m_EdgeRadius: 0
+--- !u!114 &-9049650551185313001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993930779122282824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3172567d0d74e40b6b0a314781b47872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  symbolType: 3
+  no: 0
+  effectTran: {fileID: 0}
+  spriteSymbol: {fileID: 0}
+  isSymbolTriggerd: 0
+  conditionType: 6
+  duration: 5
+  itemValue: 0.5

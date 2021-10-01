@@ -11,8 +11,8 @@ public class ConditionItemSymbol : SymbolBase
     [SerializeField, Header("持続時間")]
     private float duration;
 
-    [SerializeField, Header("効果値")]
-    private float itemValue;
+    [Header("効果値")]
+    public float itemValue;
 
 
     public override void OnEnterSymbol(SymbolManager symbolManager)
@@ -61,6 +61,8 @@ public class ConditionItemSymbol : SymbolBase
             ConditionType.View_Narrow => mapMoveController.gameObject.AddComponent<PlayerCondition_View>(),
 
             // TODO 他にもシンボル用のコンディションがあれば追加する。デバッグ用に利用することも可能
+            ConditionType.Walk_through=> mapMoveController.gameObject.AddComponent<PlayerCondition_Walk_through>(),
+
 
             _ => null
         };

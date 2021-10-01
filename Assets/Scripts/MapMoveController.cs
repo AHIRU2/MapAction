@@ -173,6 +173,11 @@ public class MapMoveController : MonoBehaviour
             //symbolBase.TriggerSymbol(this);
 
             // TODO エネミーのシンボルに接触したさい、プレイヤーに透明のコンディションが付与されている場合
+            if(symbolBase.symbolType==SymbolType.Enemy&&TryGetComponent(out PlayerCondition_Walk_through walk_Through))
+            {
+                return;
+            }
+
 
             //同じシンボルに接触した場合は処理しない
             if (symbolBase.isSymbolTriggerd)

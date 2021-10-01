@@ -83,7 +83,7 @@ public class PlayerConditionBase : MonoBehaviour
         Debug.Log("コンディション削除");
 
         // TODO コンディションのListから削除
-        //mapMoveController.RemoveConditionList(this);
+        mapMoveController.RemoveConditionsList(this);
     }
 
 
