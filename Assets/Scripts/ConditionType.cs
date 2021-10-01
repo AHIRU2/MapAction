@@ -6,6 +6,8 @@ public enum ConditionType
     Poison,       //毒の場合は体力を減らす。移動後にHPダメージ
     Hide_Symbols, //全てのシンボルが見えないが、透過すれば取れる。エネミーも先頭になる
     View,         //視界の増減2.5〜6.0f
+    View_Wide,
+    View_Narrow,
     Untouchable,  //アイテムやオープンのシンボルが見えない上に取れない。エネミーも戦闘になる
     Walk_through, //エネミーのシンボルを戦闘なしで透過できる
     Sleep,        //睡眠(移動不可）の場合は足踏みしかできないように入力制限する

@@ -29,7 +29,7 @@ public class ConditionItemSymbol : SymbolBase
     public override void TriggerSymbol(MapMoveController mapMoveController)
     {
 
-        base.TriggerAppearEffect(mapMoveController);
+        base.TriggerSymbol(mapMoveController);
 
         // 獲得時のエフェクト演出
 
