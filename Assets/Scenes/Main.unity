@@ -11659,7 +11659,7 @@ MonoBehaviour:
   column: 3
   symbolGenerateDataList:
   - symbolBasePrefab: {fileID: 7862774958922422394, guid: 79aa20339482140aa974ee6f50b2c27d, type: 3}
-    symbolWeight: 30
+    symbolWeight: 60
   - symbolBasePrefab: {fileID: 8888030796340538382, guid: ead5ec7dd8606410586887d9e234aedc, type: 3}
     symbolWeight: 30
   - symbolBasePrefab: {fileID: 5837743942645307805, guid: d15dbe23bab0946ca84d96027322eda6, type: 3}
