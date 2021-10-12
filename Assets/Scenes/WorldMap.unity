@@ -1151,10 +1151,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3560471052582281008, guid: ab0a673c861b046c08e8c5dcad036421, type: 3}
-      propertyPath: stageDataSO
-      value: 
-      objectReference: {fileID: 11400000, guid: e2303e87538024cd2b4db5e858adc093, type: 2}
     - target: {fileID: 3560471052582281009, guid: ab0a673c861b046c08e8c5dcad036421, type: 3}
       propertyPath: m_Name
       value: DataBaseManager

@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDataSO: {fileID: 11400000, guid: e872b5e2fc2394af0b642b07f9294f97, type: 2}
+  stageDataSO: {fileID: 11400000, guid: e2303e87538024cd2b4db5e858adc093, type: 2}
