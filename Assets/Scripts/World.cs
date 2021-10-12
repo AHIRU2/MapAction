@@ -16,7 +16,7 @@ public class World : MonoBehaviour
     private StageSelectDetail stageSelectDetailPrefab;
 
     [SerializeField]
-    private Transform[] stageSelectDetailTran;
+    private Transform stageSelectDetailTran;
 
     [SerializeField]
     private List<StageSelectDetail> stageSelectDetailsList = new List<StageSelectDetail>();
@@ -49,9 +49,9 @@ public class World : MonoBehaviour
         btnSubmit.interactable = false;
 
         //ステージ選択用ボタンの生成と設定
-        for(int i = 0; i < DataBaseManager.instance.stageDataSO.stadeDataList.Count; i++)
+        for(int i = 0; i < DataBaseManager.instance.stageDataSO.stageDataList.Count; i++)
         {
-            StageSelectDetail stageSelectDetail = Instantiate(stageSelectDatailPrefab, stageSelectDetailTran, false);
+            StageSelectDetail stageSelectDetail = Instantiate(stageSelectDetailPrefab, stageSelectDetailTran, false);
             stageSelectDetail.SetUpStageSelectDetail(DataBaseManager.instance.stageDataSO.stageDataList[i], this);
             stageSelectDetailsList.Add(stageSelectDetail);
 
@@ -82,7 +82,7 @@ public class World : MonoBehaviour
             .OnComplete(() =>
             {
                 //シーン遷移の準備
-                SceneStateManager.instance.PreparateStageScene(SceneName.Stage);
+                SceneStateManager.instance.PreparateNextScene(SceneName.Main);
             });
     }
 

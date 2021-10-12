@@ -9,8 +9,7 @@ public class SceneStateManager : MonoBehaviour
 {
     public static SceneStateManager instance;
 
-    [SerializeField]
-    private Stage stage;
+    public Stage stage;
 
     [SerializeField]
     private Fade fade;
@@ -114,4 +113,47 @@ public class SceneStateManager : MonoBehaviour
         //追加で読み込んだ時、どのシーンをActiveにするか指定する
         SceneManager.SetActiveScene(scene);
     }
+
+
+    /// <summary>
+    /// 指定したシーンへ移動
+    /// </summary>
+    /// <param name="nextLoadSceneName"></param>
+    public void PreparateNextScene(SceneName nextLoadSceneName)
+    {
+        if (!fade)
+        {
+            //フェードインなし
+            StartCoroutine(LoadNextScene(nextLoadSceneName));
+        }
+        else
+        {
+            //フェードインあり
+            fade.FadeIn(fadeDuration, () => { StartCoroutine(LoadNextScene(nextLoadSceneName)); });
+        }
+    }
+
+
+    /// <summary>
+    /// 指定したシーンへ移動
+    /// </summary>
+    /// <param name="nextLoadSceneName"></param>
+    /// <returns></returns>
+    private IEnumerator LoadNextScene(SceneName nextLoadSceneName)
+    {
+        SceneManager.LoadScene(nextLoadSceneName.ToString());
+
+        //フェードインしている場合には
+        if (fade)
+        {
+            //シーンの読み込み終了を待つ
+            Scene scene = SceneManager.GetSceneByName(nextLoadSceneName.ToString());
+            yield return new WaitUntil(() => scene.isLoaded);
+
+            //フェードアウト
+            fade.FadeOut(fadeDuration);
+        }
+    }
+
+
 }

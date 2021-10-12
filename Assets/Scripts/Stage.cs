@@ -72,6 +72,7 @@ public class Stage : MonoBehaviour
     private void Start()
     {
         // TODO ステージ選択機能を実装した時の処理
+        SceneStateManager.instance.stage = this;
 
         //ステージのランダム生成
         stageGenerator.GenerateStageFromRandomTiles();

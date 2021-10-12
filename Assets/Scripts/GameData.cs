@@ -30,8 +30,8 @@ public class GameData : MonoBehaviour
     //クリア済みのステージの番号
     public List<int> clearedStageNos;
 
-    // TODO 選択しているステージのデータ
-    //public StageData currentStageData;
+    //TODO 選択しているステージのデータ
+    public StageDataSO.StageData currentStageData;
 
     //ボスバトルになったかどうかの確認用
     public bool isBossBattled;
